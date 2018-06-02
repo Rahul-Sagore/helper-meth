@@ -1,7 +1,7 @@
 
 # helperMeth - Helpful Methods on String, Array, Object, Number in Javascript
 
-Some method's inspiration/naming taken from ruby.
+Some method's inspiration/naming taken from ruby. Added improved vesion of Array's `include` method, introduced in ES6.
 
 ## Methods
 * [.is_i()](#is_i)
