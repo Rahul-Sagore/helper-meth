@@ -1,0 +1,11 @@
+{
+  "name": "helperMeth",
+  "version": "1.0.0",
+  "description": "Ruby like helper methods on primitive data types",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rahul Sagore",
+  "license": "ISC"
+}
