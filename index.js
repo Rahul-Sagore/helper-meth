@@ -162,8 +162,10 @@ String.prototype.downcase = function () {
   return this.toLowerCase();
 }
 
-String.prototype.titleize = function () {
+String.prototype.titleize = function (all) {
   var wordArr = this.split(" ");
+
+  if (!all) return this[0].upcase() + this.slice(1);
 
   return wordArr.map(function(word) {
     return word[0].upcase() + word.slice(1);
@@ -172,7 +174,10 @@ String.prototype.titleize = function () {
 
 String.prototype.pluralize = function (num, pluralText) {
   if ( num > 1) {
-    return pluralText || (this + 's') ;
+    return pluralText || this + 's';
+  }
+  if (!_defined(num)) {
+    return this + 's';
   }
   return this.toString();
 }
