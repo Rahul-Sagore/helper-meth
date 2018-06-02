@@ -18,17 +18,20 @@ Some method's inspiration/naming taken from ruby. Added improved vesion of Array
 * [.count()](#count)
 * [.has()](#has)
 * [.equals()](#equals)
-* [Object.to_query()](#Objectto_query)
-* [Array.equals()](#Arrayequals)
-* [Array.includes()](#Arrayincludes) (Enhanced versin of ES6's include method)
-* [Array.to_sentence()](#Arrayto_sentence)
-* [String.to_a()](#Stringto_a)
-* [String.to_o()](#Stringto_o)
-* [String.includes()](#Stringincludes)
-* [String.upcase()](#Stringupcase)
-* [String.downcase()](#Stringdowncase)
-* [String.titleize()](#Stringtitleize)
-* [String.pluralize()](#Stringpluralize)
+* Object Specific Methods
+  * [Object.to_query()](#Objectto_query)
+* Array Specific Methods
+  * [Array.equals()](#Arrayequals)
+  * [Array.includes()](#Arrayincludes) (Enhanced versin of ES6's include method)
+  * [Array.to_sentence()](#Arrayto_sentence)
+* String Specific Methods
+  * [String.to_a()](#Stringto_a)
+  * [String.to_o()](#Stringto_o)
+  * [String.includes()](#Stringincludes)
+  * [String.upcase()](#Stringupcase)
+  * [String.downcase()](#Stringdowncase)
+  * [String.titleize()](#Stringtitleize)
+  * [String.pluralize()](#Stringpluralize)
 
 ### .is_n()
 Returns true if variable is an Number (Integer/Float). Also accepts optional arugments: `true`, if strict type checking is required in case of string:
