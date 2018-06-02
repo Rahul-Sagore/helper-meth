@@ -17,10 +17,11 @@ Some method's inspiration/naming taken from ruby language. Added improved versio
   * [.present()](#present)
   * [.empty()](#empty)
   * [.count()](#count)
-  * [.equals()](#equals)
+  * [.equals()](#equals) (Checks if String, Integer, Boolean or Object are equals, Deep Checking)
 * Object Specific Methods
   * [Object.to_query()](#objectto_query)
-  * [Object.has()](#objecthas)
+  * [Object.has()](#objecthas) (Key exists or Key-Value pair exists in Object)
+  * [Object.hasValue()](#objecthasvalue) (Value exists in any key in Object)
 * Array Specific Methods
   * [Array.equals()](#arrayequals)
   * [Array.includes()](#arrayincludes) (Enhanced versin of ES6's include method)
@@ -167,11 +168,26 @@ obj.to_query();
 ```
 
 ### Object.has()
-Returns true if the key exists in the Object, passed as argument.
+Returns true if the Key or Key-Value pair exists in the Object.
+Takes two argument: First `key_name`, Second `value_name` (Optional).
 ```js
 var obj = {hello: "World!"};
 obj.has("hello"); // returns: true
 obj.has("hell"); // returns: false
+obj.has('hello', 'World!') // returns true
+
+// Deep Nested Checking
+var obj1 = {hello: 'world!', good: {bye: 'world'}};
+obj1.has('good', {bye: 'world'})
+```
+
+### Object.hasValue()
+Returns true if the Value exists in the Object.
+```js
+var obj = {hello: 'world!', good: {bye: 'world'}};
+obj.hasValue('world!'); // return true
+obj.hasValue({bye: 'world'}); // return true
+obj.hasValue('world'); // return false
 ```
 
 ### Array.equals()

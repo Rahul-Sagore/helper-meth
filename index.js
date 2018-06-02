@@ -71,15 +71,28 @@ Object.prototype.count = function (target) {
   return count;
 }
 
-Object.prototype.equals = function (pattern) {
-  if (this.is_s() || this.is_n(true)) {
-    return this.valueOf() === pattern;
+Object.prototype.equals = function (target) {
+  var thisObj = this;
+  if (thisObj.is_s() || thisObj.is_n(true)) {
+    return thisObj.valueOf() === target;
   }
+  if ( thisObj.is_o() ) {
+    if ( !target.is_o() ) return false
+    sKeysLen = Object.keys(thisObj).length;
+    tKeysLen = Object.keys(target).length;
+    if (sKeysLen !== tKeysLen) return false;
+    for (key in thisObj) {
+      if (!thisObj[key].equals(target[key])) return false
+    }
+    return true
+  }
+  if (thisObj.valueOf() === target) return true;
+  return false
 }
 
 Object.prototype.to_query = function () {
   if ( !thisObj.is_o() ) throw "This method works on object only!";
-  thisObj = this;
+  var thisObj = this;
   var queryStrArr = [];
   for ( var key in  thisObj ) {
     if ( thisObj.hasOwnProperty(key) ) {
@@ -96,11 +109,22 @@ Object.prototype.has = function (key, value) {
     if ( !_defined(value) ) {
       return keyIdx > -1;
     }
-
     if (keyIdx >= 0 && _defined(value)) {
-
+      return value.equals(this[key]);
     }
   }
+  return false;
+}
+
+Object.prototype.hasValue = function (value) {
+  if (!this.is_o()) throw "This method works on object only!";
+  var thisObj =  this;
+  for ( var key in  thisObj ) {
+    if ( thisObj.hasOwnProperty(key) ) {
+      if (thisObj[key].equals(value)) return true;
+    }
+  }
+  return false;
 }
 
 // ARRAY METHODS
