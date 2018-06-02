@@ -4,14 +4,19 @@ function _defined(variable) {
   return typeof variable !== 'undefined';
 }
 
-// Check if variable is Integer
-Object.prototype.is_i = function () {
-  return this.constructor === Number && Math.round(this) == this;
+Object.prototype.is_n = function (strict) {
+  // Strick checking if the variable is not string and of number type
+  if (strict) return this.constructor === Number;
+  return !isNaN(this);
+}
+
+Object.prototype.is_i = function (strict) {
+  return this.is_n(strict) && Math.round(this) == this;
 }
 
 // Check if variable is Float
-Object.prototype.is_float = function () {
-  return this.constructor === Number && !this.is_i();
+Object.prototype.is_float = function (strict) {
+  return this.is_n(strict) && !this.is_i(strict);
 }
 
 // Check if variable is String
@@ -78,6 +83,28 @@ Object.prototype.count = function (target) {
   return count;
 }
 
+Object.prototype.has = function (key, value) {
+  if (!this.is_o()) throw "This method works on object only!";
+  if ( key ) {
+    var keyIdx = Object.keys(this).indexOf(key);
+    if ( !_defined(value) ) {
+      return keyIdx > -1;
+    }
+
+    if (keyIdx >= 0 && _defined(value)) {
+
+    }
+  }
+}
+
+Object.prototype.equals = function (pattern) {
+  if (this.is_s() || this.is_n(true)) {
+    return this.valueOf() === pattern;
+  }
+}
+
+// ARRAY METHODS
+
 Array.prototype.includes = function (item) {
   var thisArr = this;
   for (var i = 0; i < thisArr.length; i++) {
@@ -133,7 +160,7 @@ Array.prototype.uniq = function () {
   return newArr;
 }
 
-// String Methods
+// STRING METHODS
 
 String.prototype.to_a = function (pattern) {
   if (pattern) return this.split(pattern);
@@ -152,6 +179,11 @@ String.prototype.to_o = function () {
     newObj[thisString[i]] = thisString[i];
   }
   return newObj;
+}
+
+String.prototype.includes = function (pattern) {
+  var thisString = this;
+  return this.indexOf(pattern) > -1;
 }
 
 String.prototype.upcase = function () {

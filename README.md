@@ -4,6 +4,7 @@
 Some method's inspiration/naming taken from ruby. Added improved vesion of Array's `include` method, introduced in ES6.
 
 ## Methods
+* [.is_n()](#is_n)
 * [.is_i()](#is_i)
 * [.is_float()](#is_float)
 * [.is_s()](#is_s)
@@ -15,28 +16,43 @@ Some method's inspiration/naming taken from ruby. Added improved vesion of Array
 * [.present()](#present)
 * [.empty()](#empty)
 * [.count()](#count)
+* [.has()](#has)
+* [.equals()](#equals)
 * [Object.to_query()](#Objectto_query)
 * [Array.equals()](#Arrayequals)
 * [Array.includes()](#Arrayincludes) (Enhanced versin of ES6's include method)
 * [Array.to_sentence()](#Arrayto_sentence)
 * [String.to_a()](#Stringto_a)
 * [String.to_o()](#Stringto_o)
+* [String.includes()](#Stringincludes)
 * [String.upcase()](#Stringupcase)
 * [String.downcase()](#Stringdowncase)
 * [String.titleize()](#Stringtitleize)
 * [String.pluralize()](#Stringpluralize)
 
+### .is_n()
+Returns true if variable is an Number (Integer/Float). Also accepts optional arugments: `true`, if strict type checking is required in case of string:
+```js
+var num = 1;
+var float1 = 1.3;
+var str = "1";
+num1.is_n() // return true
+float1.is_n() // return true
+str.is_n() // returns true
+str.is_n(true) // returns false
+```
+
 ### .is_i()
-Returns true if variable is an Integer/Number:
+Returns true if variable is an Integer/Number. Also accepts optional arugments: `true`, if strict type checking is required in case of string:
 ```js
 var num = 21;
 var str = "Hello world!";
-num.is_i() // return true`
+num.is_i() // return true
 str.is_i() // returns false
 ```
 
 ### .is_float()
-Return true if variable is a float:
+Return true if variable is a Float. Also accepts optional arugments: `true`, if strict type checking is required in case of string:
 
 ```js
 var num1 = 2.1;
@@ -123,6 +139,29 @@ var arr = [1, 2, 4, 1, 4, 4];
 arr.count(4) //returns 3
 ```
 
+### Object.has()
+Returns true if the key exists in the Object, passed as argument.
+```js
+var obj = {hello: "World!"};
+obj.has("hello"); // returns: true
+obj.has("hell"); // returns: false
+```
+
+### .equals()
+Returns true if String or Number is equal.
+```js
+var num1 = 1;
+var num2 = 1.2;
+var str = "1";
+
+num1.equals(1) // returns true;
+num1.equals("1") // returns false;
+num2.equals(1.2) // returns true;
+str.equals("1") // returns true
+str.equals(1) // returns false
+```
+
+
 ### Object.to_query()
 Converts object to query parameter string.
 ```js
@@ -177,6 +216,13 @@ Converts String to Array:
 Convert string to Object:
 ```js
 "Hello".to_a() // returns: {H: "H", e: "e", l: "l", o: "o"}
+```
+
+### String.includes()
+returns true if string contains substring
+```js
+"Hello World!".includes('Hell') // return true 
+"This World!".includes('Heaven') // return false 
 ```
 
 ### String.upcase()
