@@ -15,16 +15,16 @@ Some method's inspiration/naming taken from ruby.
 * [.present()](#present)
 * [.empty()](#empty)
 * [.count()](#count)
-* [Object.to_query()](#Object.to_query)
-* [Array.equals()](#Array.equals)
-* [Array.includes()](#Array.includes) (Enhanced versin of ES6's include method)
-* [Array.to_sentence()](#Array.to_sentence)
-* [String.to_a()](#String.to_a)
-* [String.to_o()](#String.to_o)
-* [String.upcase()](#String.upcase)
-* [String.downcase()](#String.downcase)
-* [String.titleize()](#String.titleize)
-* [String.pluralize()](#String.pluralize)
+* [Object.to_query()](#Objectto_query)
+* [Array.equals()](#Arrayequals)
+* [Array.includes()](#Arrayincludes) (Enhanced versin of ES6's include method)
+* [Array.to_sentence()](#Arrayto_sentence)
+* [String.to_a()](#Stringto_a)
+* [String.to_o()](#Stringto_o)
+* [String.upcase()](#Stringupcase)
+* [String.downcase()](#Stringdowncase)
+* [String.titleize()](#Stringtitleize)
+* [String.pluralize()](#Stringpluralize)
 
 ### .is_i()
 Returns true if variable is an Integer/Number:
@@ -114,7 +114,7 @@ str.empty() // Returns true
 ```
 
 ### .count()
-Count the number occurrence of an item/character in a Array or String.
+Count the number occurrence of an item/character in an Array or String.
 ```js
 var str = "Hello World!";
 str.count("o"); // returns: 2
@@ -147,8 +147,8 @@ ES6 has `.includes()` method, but this method fails if we check if array element
 New implementation will use `.equals()` method and will check if another Array is present in Array.
 ```js
 [1, 2].includes(1) // return true
-[1, 2, [3, 4]].equals([3, 4]) // return true
-[1, 2].equals([2, 1]) // return false
+[1, 2, [3, 4]].includes([3, 4]) // return true
+[1, 2].includes(3) // return false
 ```
 ### Array.to_sentence()
 Converts an array to human readable sentence:
@@ -156,12 +156,12 @@ Converts an array to human readable sentence:
   ['John', "Johny", "Jenna"].to_sentence();
   // Output: "John, Johny and Jenna"
 ```
-This method accepts two parameter: `last_word_connector`, where you can specify which word will connect that last word with rest of the Array values
+This method accepts two parameter: `last_word_connector`, where you can specify which word will connect the last word with rest of the Array values
 ```js
 ['John', "Johny", "Jenna"].to_sentence("or");
 // Output: "John, Johny or Jenna"
 ```
-Another parameter is: `word separator`, which will use user given separator instead of default `,`:
+Another parameter is: `word separator`, instead of default `,`:
 ```js
 ['John', "Johny", "Jenna"].to_sentence("or", " ");
 // Output: "John Johny or Jenna"
@@ -193,14 +193,14 @@ Converts string charactores to Lowercase:
 
 ### String.titleize()
 Converts first letter of word to Uppercase.
-Option argument: true, if passed will convert all word's first character to string.
+Optional argument: true, if passed will convert all words in a sentence to titlecase else only the first letter.
 ```js
 "hello world!".titleize() // returns: "Hello world!"
 "hello world!".titleize(true) // returns: "Hello World!"
 ```
 
 ### String.pluralize()
-Converts a string to customizable plural text based on number passed as argument. This is not grammatically perfect, that is why added second argument: `pluralText`  which will return this text if the number is greater than 1;
+Converts a string to customizable plural text based on number passed as argument. This is not grammatically perfect, that is why added second argument: `pluralText`  which will get return if the number is greater than 1;
 ```js
 "size".pluralize() // returns: "sizes"
 "size".pluralize(1) // returns: "size"
