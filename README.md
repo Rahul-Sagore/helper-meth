@@ -4,18 +4,18 @@
 Some method's inspiration/naming taken from ruby.
 
 ## Methods
-* [.is_i()](#.is_i)
-* [.is_float()](#.is_float)
-* [.is_s()](#.is_s)
-* [.is_a()](#.is_a)
-* [.is_o()](#.is_o)
-* [.is_f()](#.is_f)
-* [.is_json()](#.is_json)
-* [.to_json()](#.to_json)
-* [.present()](#.present)
-* [.empty()](#.empty)
+* [.is_i()](#is_i)
+* [.is_float()](#is_float)
+* [.is_s()](#is_s)
+* [.is_a()](#is_a)
+* [.is_o()](#is_o)
+* [.is_f()](#is_f)
+* [.is_json()](#is_json)
+* [.to_json()](#to_json)
+* [.present()](#present)
+* [.empty()](#empty)
+* [.count()](#count)
 * [Object.to_query()](#Object.to_query)
-* [.count()](#.count)
 * [Array.equals()](#Array.equals)
 * [Array.includes()](#Array.includes) (Enhanced versin of ES6's include method)
 * [Array.to_sentence()](#Array.to_sentence)
@@ -113,14 +113,6 @@ var str1 = "";
 str.empty() // Returns true
 ```
 
-### Object.to_query()
-Converts object to query parameter string.
-```js
-var obj = {hello: "world", goodbye: "world"};
-obj.to_query();
-// Outputs: "hello=world&goodbye=world"
-```
-
 ### .count()
 Count the number occurrence of an item/character in a Array or String.
 ```js
@@ -129,6 +121,14 @@ str.count("o"); // returns: 2
 
 var arr = [1, 2, 4, 1, 4, 4];
 arr.count(4) //returns 3
+```
+
+### Object.to_query()
+Converts object to query parameter string.
+```js
+var obj = {hello: "world", goodbye: "world"};
+obj.to_query();
+// Outputs: "hello=world&goodbye=world"
 ```
 
 ### Array.equals()
