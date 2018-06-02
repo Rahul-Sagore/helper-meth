@@ -62,18 +62,6 @@ Object.prototype.empty = function () {
   return !this.present();
 }
 
-Object.prototype.to_query = function () {
-  thisObj = this;
-  if ( !thisObj.is_o() ) throw "this is not an object";;
-  var queryStrArr = [];
-  for ( var key in  thisObj ) {
-    if ( thisObj.hasOwnProperty(key) ) {
-      queryStrArr.push(key + "=" + encodeURIComponent(thisObj[key]));
-    }
-  }
-  return queryStrArr.join('&');
-}
-
 Object.prototype.count = function (target) {
   if (!this.is_s() && !this.is_a()) throw "This method works on string and array only!";
   var source = this.is_s() ? this.to_a() : this;
@@ -81,6 +69,24 @@ Object.prototype.count = function (target) {
 
   source.map(function(item) { if (item === target) count++; })
   return count;
+}
+
+Object.prototype.equals = function (pattern) {
+  if (this.is_s() || this.is_n(true)) {
+    return this.valueOf() === pattern;
+  }
+}
+
+Object.prototype.to_query = function () {
+  if ( !thisObj.is_o() ) throw "This method works on object only!";
+  thisObj = this;
+  var queryStrArr = [];
+  for ( var key in  thisObj ) {
+    if ( thisObj.hasOwnProperty(key) ) {
+      queryStrArr.push(key + "=" + encodeURIComponent(thisObj[key]));
+    }
+  }
+  return queryStrArr.join('&');
 }
 
 Object.prototype.has = function (key, value) {
@@ -97,28 +103,7 @@ Object.prototype.has = function (key, value) {
   }
 }
 
-Object.prototype.equals = function (pattern) {
-  if (this.is_s() || this.is_n(true)) {
-    return this.valueOf() === pattern;
-  }
-}
-
 // ARRAY METHODS
-
-Array.prototype.includes = function (item) {
-  var thisArr = this;
-  for (var i = 0; i < thisArr.length; i++) {
-    var thisItem = thisArr[i];
-    if ( thisItem === item ) return true
-    if ( item.is_a() &&  thisItem.is_a()) { // If item is array
-      if ( thisItem.equals(item) ) return true
-    }
-    if ( item.is_o() && thisItem.is_o()) {
-
-    }
-  }
-  return false;
-}
 
 Array.prototype.equals = function(targetArr) {
   if( !targetArr.is_a ) return false;
@@ -140,6 +125,21 @@ Array.prototype.equals = function(targetArr) {
     }
   }
   return true
+}
+
+Array.prototype.includes = function (item) {
+  var thisArr = this;
+  for (var i = 0; i < thisArr.length; i++) {
+    var thisItem = thisArr[i];
+    if ( thisItem === item ) return true
+    if ( item.is_a() &&  thisItem.is_a()) { // If item is array
+      if ( thisItem.equals(item) ) return true
+    }
+    if ( item.is_o() && thisItem.is_o()) {
+
+    }
+  }
+  return false;
 }
 
 Array.prototype.to_sentence = function (connector, separator) {

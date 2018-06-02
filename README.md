@@ -4,31 +4,35 @@
 Some method's inspiration/naming taken from ruby. Added improved vesion of Array's `include` method, introduced in ES6.
 
 ## Methods
-* [.is_n()](#is_n)
-* [.is_i()](#is_i)
-* [.is_float()](#is_float)
-* [.is_s()](#is_s)
-* [.is_a()](#is_a)
-* [.is_o()](#is_o)
-* [.is_f()](#is_f)
-* [.is_json()](#is_json)
-* [.to_json()](#to_json)
-* [.present()](#present)
-* [.empty()](#empty)
-* [.count()](#count)
-* [.has()](#has)
-* [.equals()](#equals)
-* [Object.to_query()](#Objectto_query)
-* [Array.equals()](#Arrayequals)
-* [Array.includes()](#Arrayincludes) (Enhanced versin of ES6's include method)
-* [Array.to_sentence()](#Arrayto_sentence)
-* [String.to_a()](#Stringto_a)
-* [String.to_o()](#Stringto_o)
-* [String.includes()](#Stringincludes)
-* [String.upcase()](#Stringupcase)
-* [String.downcase()](#Stringdowncase)
-* [String.titleize()](#Stringtitleize)
-* [String.pluralize()](#Stringpluralize)
+* Generic Methods
+  * [.is_n()](#is_n)
+  * [.is_i()](#is_i)
+  * [.is_float()](#is_float)
+  * [.is_s()](#is_s)
+  * [.is_a()](#is_a)
+  * [.is_o()](#is_o)
+  * [.is_f()](#is_f)
+  * [.is_json()](#is_json)
+  * [.to_json()](#to_json)
+  * [.present()](#present)
+  * [.empty()](#empty)
+  * [.count()](#count)
+  * [.equals()](#equals)
+* Object Specific Methods
+  * [Object.to_query()](#Objectto_query)
+  * [Object.has()](#Objecthas)
+* Array Specific Methods
+  * [Array.equals()](#Arrayequals)
+  * [Array.includes()](#Arrayincludes) (Enhanced versin of ES6's include method)
+  * [Array.to_sentence()](#Arrayto_sentence)
+* String Specific Methods
+  * [String.to_a()](#Stringto_a)
+  * [String.to_o()](#Stringto_o)
+  * [String.includes()](#Stringincludes)
+  * [String.upcase()](#Stringupcase)
+  * [String.downcase()](#Stringdowncase)
+  * [String.titleize()](#Stringtitleize)
+  * [String.pluralize()](#Stringpluralize)
 
 ### .is_n()
 Returns true if variable is an Number (Integer/Float). Also accepts optional arugments: `true`, if strict type checking is required in case of string:
@@ -139,14 +143,6 @@ var arr = [1, 2, 4, 1, 4, 4];
 arr.count(4) //returns 3
 ```
 
-### Object.has()
-Returns true if the key exists in the Object, passed as argument.
-```js
-var obj = {hello: "World!"};
-obj.has("hello"); // returns: true
-obj.has("hell"); // returns: false
-```
-
 ### .equals()
 Returns true if String or Number is equal.
 ```js
@@ -168,6 +164,14 @@ Converts object to query parameter string.
 var obj = {hello: "world", goodbye: "world"};
 obj.to_query();
 // Outputs: "hello=world&goodbye=world"
+```
+
+### Object.has()
+Returns true if the key exists in the Object, passed as argument.
+```js
+var obj = {hello: "World!"};
+obj.has("hello"); // returns: true
+obj.has("hell"); // returns: false
 ```
 
 ### Array.equals()
