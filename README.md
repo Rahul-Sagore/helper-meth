@@ -1,6 +1,6 @@
 
 # helperMeth
-### Helpful Methods on String, Array, Object, Number in Javascript
+### Helpful methods on String, Array, Object, Number in Javascript
 
 - Improved version of Array's `includes` method, introduced in ES6.
 - Deep/Nested checking of values inside Array and Object. Using recursion.
