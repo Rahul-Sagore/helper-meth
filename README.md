@@ -1,7 +1,10 @@
 
 # helperMeth - Helpful Methods on String, Array, Object, Number in Javascript
 
-Some method's inspiration/naming taken from ruby language. Added improved version of Array's `includes` method, introduced in ES6.
+- Improved version of Array's `includes` method, introduced in ES6.
+- Deep/Nested checking of values inside Array and Object. Using recursion.
+- Has shorthand methods
+- Some method's inspiration/naming taken from ruby language.
 
 ## Methods
 * Generic Methods
