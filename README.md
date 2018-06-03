@@ -1,5 +1,5 @@
 
-# helperMeth
+# helper-meth
 ### Helpful methods on String, Array, Object, Number in Javascript
 
 - Improved version of Array's `includes` method, introduced in ES6.

@@ -1,5 +1,5 @@
 {
-  "name": "helperMeth",
+  "name": "helper-meth",
   "version": "1.0.0",
   "description": "helperMeth - Improved/Helpful Methods on String, Array, Object, Number in Javascript",
   "browser": "./src/index.js",
@@ -12,7 +12,7 @@
     "url": "https://github.com/Rahul-Sagore/helperMeth.git"
   },
   "bugs": "https://github.com/Rahul-Sagore/helperMeth/issues",
-  "homepage": "https://github.com/Rahul-Sagore/helperMeth#helpermeth",
+  "homepage": "https://github.com/Rahul-Sagore/helperMeth#helper-meth",
   "author": "Rahul Sagore <rahul.sagore@gmail.com>",
   "license": "MIT"
 }
