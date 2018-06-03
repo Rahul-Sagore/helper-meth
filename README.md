@@ -7,6 +7,11 @@
 - Has shorthand methods
 - Some method's inspiration/naming taken from ruby language.
 
+### Installation
+```bash
+npm install helper-meth --save
+```
+
 ## Methods
 * Generic Methods
   * [.is_n()](#is_n)
