@@ -41,7 +41,7 @@ Object.prototype.is_f = function () {
 Object.prototype.is_json = function () {
   try {
     JSON.parse(this);
-  } catch {
+  } catch(e) {
     return false;
   }
   return true;
@@ -53,9 +53,9 @@ Object.prototype.to_json = function () {
 
 Object.prototype.present = function () {
   thisObj = this;
-  if (!_defined(thisObj)) return false;
   if (thisObj.is_s() || thisObj.is_a()) return thisObj.length > 0;
   if (thisObj.is_o()) return Object.keys(thisObj).length > 0;
+  return false;
 }
 
 Object.prototype.empty = function () {
@@ -67,7 +67,12 @@ Object.prototype.count = function (target) {
   var source = this.is_s() ? this.to_a() : this;
   var count = 0, sourceLen = source.length;
 
-  source.map(function(item) { if (item === target) count++; })
+  if ( this.is_a() ) {
+    source.map(function(item) { if (item === target) count++; });
+  } else {
+    var regex = new RegExp(target, 'g');
+    count = (this.match(regex) || []).length
+  }
   return count;
 }
 
@@ -82,7 +87,9 @@ Object.prototype.equals = function (target) {
     tKeysLen = Object.keys(target).length;
     if (sKeysLen !== tKeysLen) return false;
     for (key in thisObj) {
-      if (!thisObj[key].equals(target[key])) return false
+      if (thisObj.hasOwnProperty(key)) {
+        if (!thisObj[key].equals(target[key])) return false
+      }
     }
     return true
   }
@@ -91,7 +98,7 @@ Object.prototype.equals = function (target) {
 }
 
 Object.prototype.to_query = function () {
-  if ( !thisObj.is_o() ) throw "This method works on object only!";
+  if ( !this.is_o() ) throw "This method works on object only!";
   var thisObj = this;
   var queryStrArr = [];
   for ( var key in  thisObj ) {
@@ -139,14 +146,17 @@ Array.prototype.equals = function(targetArr) {
   for (var i = 0; i < thisArrLen; i++) {
     var sItem = thisArr[i];
     var tItem = targetArr[i];
-    if (!sItem.is_a() && sItem != tItem) return false;
-    if (sItem.is_a()) {
+    if ( sItem.is_a() ) { // If Item is Array
        if ( !tItem.is_a() ) return false;
        if ( tItem.is_a() ) {
          if ( sItem.length != tItem.length ) return false;
          if (!sItem.equals(tItem)) return false;
        }
     }
+    if ( sItem.is_o() ) { // If item is Object
+      if( !sItem.equals(tItem) ) return false;
+    }
+    if ((!sItem.is_a() && !sItem.is_o()) && sItem != tItem) return false;
   }
   return true
 }
@@ -155,12 +165,12 @@ Array.prototype.includes = function (item) {
   var thisArr = this;
   for (var i = 0; i < thisArr.length; i++) {
     var thisItem = thisArr[i];
-    if ( thisItem === item ) return true
+    if ( thisItem === item ) return true;
     if ( item.is_a() &&  thisItem.is_a()) { // If item is array
-      if ( thisItem.equals(item) ) return true
+      if ( thisItem.equals(item) ) return true;
     }
-    if ( item.is_o() && thisItem.is_o()) {
-
+    if ( thisItem.is_o() && item.is_o()) {
+      if (item.equals(thisItem)) return true;
     }
   }
   return false;
