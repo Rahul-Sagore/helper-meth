@@ -4,7 +4,7 @@
 
 - Improved version of Array's `includes` method, introduced in ES6.
 - Deep/Nested checking of values inside Array and Object. Using recursion.
-- Has shorthand methods
+- It also shorthand methods
 - Some method's inspiration/naming taken from ruby language.
 
 ### Installation
